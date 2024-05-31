@@ -4,7 +4,40 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokemon API</title>
+
+    <link
+      href="./node_modules/bootstrap/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="./node_modules/handlebars/dist/handlebars.min.js"></script>
+
+    <script src="./pokemon-script.js" defer></script>
   </head>
-  <body></body>
+
+  <body>
+    <!-- ovo zelimo koristiti kao template i zato cemo koristiti -> handlebar kao templateing mehanizam --!>
+<!-- output from template -->
+
+    <script id="pokemon-lista" type="text/x-handlebars-template">
+          <table class="table-primary table striped" table striped>
+              <tr>
+                  <th class="d-none d-sm-block col-sm-block">#</th>
+                  <th>Ime</th>
+              </th>
+          </tr>
+      {{#each pokemon}}
+      <tr>
+          <td class="d-none d-sm-block col-sm-block">{{increaseIndex @index}}</td>
+          <td><a href="{{this.url}}"> {{this.name}}</a></td>
+      </tr>
+      {{/each}}
+          </table>
+    </script>
+
+    <div id="pokemon-output">
+      <!-- output from template -->
+    </div>
+  </body>
 </html>
