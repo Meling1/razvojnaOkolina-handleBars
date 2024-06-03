@@ -28,25 +28,31 @@ function afterRender() {
   // remove those starts with "p" after 2 sec
   setTimeout(function () {
     // find "a" starts with letter "p"
-    const hideMe = &("table td a:contains('p')").filter(function () {
+    const aTag = $("table td a:contains('p')").filter(function () {
       // only element with first letter "p"
       return this.innerHTML.indexOf("p") == 0;
     });
     // remove closest "tr" element
-    hideMe.closest("tr").remove();
+    aTag.closest("tr").remove();
     // after removing some tr's our table is broken
 
-applyColorOnRow();
-  }, 2000)
-};
-
-function applyColorOnRow() {
-  // 1. remove all class zebra 
-  $("table tr:nth-child(even)").addClass("zebra");
-  //2. apply again class zebra on even row
-  $("table tr:nth-child")
+    applyColorOnRow();
+    insertDiv(aTag.length);
+  }, 2000);
 }
 
+function applyColorOnRow() {
+  // 1. remove all class zebra
+  $("table tr:nth-child(even)").addClass("zebra");
+  //2. apply again class zebra on even row
+  $("table tr:nth-child");
+}
+
+function insertDiv(numOfHidden) {
+  $('<div id="noOfHidden></div>')
+    .insertAfter("#pokemon-output")
+    .text("broj skrivenih: " + numOfHidden);
+}
 
 xhr.onload = function () {
   // napravi tablicu pokemona
