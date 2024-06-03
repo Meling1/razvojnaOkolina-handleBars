@@ -9,12 +9,13 @@ xhr.open("GET", "https://pokeapi.co/api/v2/pokemon-color/yellow", true);
 
 function popuniPokemone() {
   const data = JSON.parse(xhr.response);
+  // this element cant  be translated to jquery sintax because of "script"
   const source = document.getElementById("pokemon-lista").innerHTML;
   const template = Handlebars.compile(source);
   const context = { pokemon: data.pokemon_species.slice(0, 20) };
   const html = template(context);
 
-  document.getElementById("pokemon-output").innerHTML = html;
+  $("#pokemon-output").html(html);
 }
 
 function afterRender() {
@@ -64,3 +65,13 @@ xhr.onload = function () {
 };
 
 xhr.send();
+
+/* resize is deprecated
+$(window).resize(() => {
+  console.log(window.innerHeight);
+});
+*/
+
+$(window).on("resize", function () {
+  console.log(window.innerWidth);
+});
