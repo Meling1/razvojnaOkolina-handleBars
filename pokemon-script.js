@@ -19,6 +19,8 @@ function popuniPokemone() {
 
 xhr.onload = function () {
   popuniPokemone();
+
+  $('[data-bs-toggle="popover"]').popover();
 };
 
 xhr.send();
